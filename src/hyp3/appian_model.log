@@ -1,0 +1,276 @@
+2025-04-23 18:45:41,310 - data_loader - INFO - Loading data from train.csv
+2025-04-23 18:45:41,319 - data_loader - INFO - Initial data shape: (1567, 29)
+2025-04-23 18:45:41,319 - data_loader - INFO - Columns: ID, Year_Birth, Education, Marital_Status, Income, Kidhome, Teenhome, Dt_Customer, Recency, MntWines, MntFruits, MntMeatProducts, MntFishProducts, MntSweetProducts, MntGoldProds, NumDealsPurchases, NumWebPurchases, NumCatalogPurchases, NumStorePurchases, NumWebVisitsMonth, AcceptedCmp3, AcceptedCmp4, AcceptedCmp5, AcceptedCmp1, AcceptedCmp2, Complain, Z_CostContact, Z_Revenue, Target
+2025-04-23 18:45:41,322 - data_loader - WARNING - Missing values detected:
+Income             17
+MntWines           23
+MntMeatProducts     6
+MntGoldProds       12
+dtype: int64
+2025-04-23 18:45:41,322 - data_loader - INFO - Converting Dt_Customer to datetime
+2025-04-23 18:45:41,325 - data_loader - WARNING - Found 919 missing dates. Filling with median: 2013-06-10 00:00:00
+2025-04-23 18:45:41,325 - data_loader - INFO - Creating Days_Since_Registration feature
+2025-04-23 18:45:41,328 - data_loader - INFO - Filling 17 missing Income values with median
+2025-04-23 18:45:41,328 - data_loader - INFO - Processing categorical column: Education
+2025-04-23 18:45:41,328 - data_loader - INFO - Processing categorical column: Marital_Status
+2025-04-23 18:45:41,329 - data_loader - WARNING - Capping 8 outliers in Income at 102002.30000000002
+2025-04-23 18:45:41,330 - data_loader - WARNING - Found 3 unreasonable birth years. Capping between 1925 and 2007
+2025-04-23 18:45:41,332 - data_loader - WARNING - There are still 41 missing values in the dataset
+2025-04-23 18:45:41,334 - data_loader - INFO - Final data shape: (1567, 29)
+2025-04-23 18:45:41,335 - data_loader - INFO - Missing values after preprocessing: 0
+2025-04-23 18:45:41,335 - data_loader - INFO - Loading data from test.csv
+2025-04-23 18:45:41,339 - data_loader - INFO - Initial data shape: (673, 28)
+2025-04-23 18:45:41,339 - data_loader - INFO - Columns: ID, Year_Birth, Education, Marital_Status, Income, Kidhome, Teenhome, Dt_Customer, Recency, MntWines, MntFruits, MntMeatProducts, MntFishProducts, MntSweetProducts, MntGoldProds, NumDealsPurchases, NumWebPurchases, NumCatalogPurchases, NumStorePurchases, NumWebVisitsMonth, AcceptedCmp3, AcceptedCmp4, AcceptedCmp5, AcceptedCmp1, AcceptedCmp2, Complain, Z_CostContact, Z_Revenue
+2025-04-23 18:45:41,340 - data_loader - WARNING - Missing values detected:
+Income              7
+MntWines           12
+MntMeatProducts     9
+MntGoldProds        7
+dtype: int64
+2025-04-23 18:45:41,340 - data_loader - INFO - Converting Dt_Customer to datetime
+2025-04-23 18:45:41,342 - data_loader - WARNING - Found 268 missing dates. Filling with median: 2013-07-13 00:00:00
+2025-04-23 18:45:41,342 - data_loader - INFO - Creating Days_Since_Registration feature
+2025-04-23 18:45:41,342 - data_loader - INFO - Filling 7 missing Income values with median
+2025-04-23 18:45:41,343 - data_loader - INFO - Processing categorical column: Education
+2025-04-23 18:45:41,343 - data_loader - INFO - Processing categorical column: Marital_Status
+2025-04-23 18:45:41,344 - data_loader - WARNING - Capping 4 outliers in Income at 107665.11999999976
+2025-04-23 18:45:41,345 - data_loader - WARNING - There are still 28 missing values in the dataset
+2025-04-23 18:45:41,347 - data_loader - INFO - Final data shape: (673, 28)
+2025-04-23 18:45:41,347 - data_loader - INFO - Missing values after preprocessing: 0
+2025-04-23 18:45:41,348 - feature_engineering - INFO - Feature Engineer initialized
+2025-04-23 18:45:41,348 - feature_engineering - INFO - Fitting Feature Engineer
+2025-04-23 18:45:41,348 - feature_engineering - INFO - Transforming data with Feature Engineer
+2025-04-23 18:45:41,348 - feature_engineering - INFO - Input data shape: (1567, 29)
+2025-04-23 18:45:41,348 - feature_engineering - INFO - Engineering demographic features
+2025-04-23 18:45:41,350 - feature_engineering - INFO - Engineering purchase behavior features
+2025-04-23 18:45:41,351 - feature_engineering - INFO - Engineering purchase channel features
+2025-04-23 18:45:41,353 - feature_engineering - INFO - Engineering campaign features
+2025-04-23 18:45:41,353 - feature_engineering - INFO - Engineering loyalty and engagement features
+2025-04-23 18:45:41,354 - feature_engineering - INFO - One-hot encoding categorical features
+2025-04-23 18:45:41,354 - feature_engineering - INFO - One-hot encoding Education
+2025-04-23 18:45:41,355 - feature_engineering - INFO - One-hot encoding Marital_Status
+2025-04-23 18:45:41,356 - feature_engineering - INFO - Creating interaction features
+2025-04-23 18:45:41,356 - feature_engineering - INFO - Dropping redundant features
+2025-04-23 18:45:41,357 - feature_engineering - INFO - Output data shape: (1567, 65)
+2025-04-23 18:45:41,357 - feature_engineering - INFO - Engineered features: {'FishProductsRatio', 'StoreRatio', 'Marital_Status_Together', 'SpendingVolatility', 'Education_Unknown', 'MeatProductsRatio', 'ChildAdultRatio', 'CampaignAcceptanceRate', 'TotalSpent', 'Marital_Status_Married', 'Education_Basic', 'RecencyRatio', 'Education_PhD', 'PurchaseFrequency', 'SpentPerPerson', 'Age', 'DealRatio', 'CatalogRatio', 'WebEngagement_x_Age', 'IncomePerMember', 'HasChildren', 'WebEngagementRatio', 'Education_Graduation', 'Marital_Status_Divorced', 'WinesRatio', 'GoldProdsRatio', 'TotalPurchases', 'Education_Master', 'Age_x_Income', 'Marital_Status_Widow', 'TotalAcceptedCampaigns', 'SweetProductsRatio', 'Marital_Status_Single', 'Marital_Status_Unknown', 'TenureYears', 'FruitsRatio', 'FamilySize', 'AvgBasketSize', 'WebRatio'}
+2025-04-23 18:45:41,357 - feature_engineering - INFO - Transforming data with Feature Engineer
+2025-04-23 18:45:41,357 - feature_engineering - INFO - Input data shape: (673, 28)
+2025-04-23 18:45:41,357 - feature_engineering - INFO - Engineering demographic features
+2025-04-23 18:45:41,358 - feature_engineering - INFO - Engineering purchase behavior features
+2025-04-23 18:45:41,360 - feature_engineering - INFO - Engineering purchase channel features
+2025-04-23 18:45:41,361 - feature_engineering - INFO - Engineering campaign features
+2025-04-23 18:45:41,362 - feature_engineering - INFO - Engineering loyalty and engagement features
+2025-04-23 18:45:41,362 - feature_engineering - INFO - One-hot encoding categorical features
+2025-04-23 18:45:41,362 - feature_engineering - INFO - One-hot encoding Education
+2025-04-23 18:45:41,363 - feature_engineering - INFO - One-hot encoding Marital_Status
+2025-04-23 18:45:41,364 - feature_engineering - INFO - Creating interaction features
+2025-04-23 18:45:41,364 - feature_engineering - INFO - Dropping redundant features
+2025-04-23 18:45:41,365 - feature_engineering - INFO - Output data shape: (673, 65)
+2025-04-23 18:45:41,365 - feature_engineering - INFO - Engineered features: {'FishProductsRatio', 'StoreRatio', 'Marital_Status_Together', 'SpendingVolatility', 'Education_Unknown', 'MeatProductsRatio', 'ChildAdultRatio', 'CampaignAcceptanceRate', 'TotalSpent', 'Marital_Status_Married', 'Education_Basic', 'RecencyRatio', 'Education_PhD', 'PurchaseFrequency', 'SpentPerPerson', 'Marital_Status_YOLO', 'Age', 'DealRatio', 'CatalogRatio', 'WebEngagement_x_Age', 'IncomePerMember', 'HasChildren', 'WebEngagementRatio', 'Education_Graduation', 'Marital_Status_Divorced', 'WinesRatio', 'GoldProdsRatio', 'TotalPurchases', 'Education_Master', 'Age_x_Income', 'Marital_Status_Widow', 'TotalAcceptedCampaigns', 'SweetProductsRatio', 'Marital_Status_Single', 'Marital_Status_Unknown', 'TenureYears', 'FruitsRatio', 'FamilySize', 'AvgBasketSize', 'WebRatio'}
+2025-04-23 18:47:30,868 - data_loader - INFO - Loading data from train.csv
+2025-04-23 18:47:30,878 - data_loader - INFO - Initial data shape: (1567, 29)
+2025-04-23 18:47:30,878 - data_loader - INFO - Columns: ID, Year_Birth, Education, Marital_Status, Income, Kidhome, Teenhome, Dt_Customer, Recency, MntWines, MntFruits, MntMeatProducts, MntFishProducts, MntSweetProducts, MntGoldProds, NumDealsPurchases, NumWebPurchases, NumCatalogPurchases, NumStorePurchases, NumWebVisitsMonth, AcceptedCmp3, AcceptedCmp4, AcceptedCmp5, AcceptedCmp1, AcceptedCmp2, Complain, Z_CostContact, Z_Revenue, Target
+2025-04-23 18:47:30,880 - data_loader - WARNING - Missing values detected:
+Income             17
+MntWines           23
+MntMeatProducts     6
+MntGoldProds       12
+dtype: int64
+2025-04-23 18:47:30,880 - data_loader - INFO - Converting Dt_Customer to datetime
+2025-04-23 18:47:30,886 - data_loader - WARNING - Found 919 missing dates. Filling with median: 2013-06-10 00:00:00
+2025-04-23 18:47:30,886 - data_loader - INFO - Creating Days_Since_Registration feature
+2025-04-23 18:47:30,889 - data_loader - INFO - Filling 17 missing Income values with median
+2025-04-23 18:47:30,890 - data_loader - INFO - Processing categorical column: Education
+2025-04-23 18:47:30,890 - data_loader - INFO - Processing categorical column: Marital_Status
+2025-04-23 18:47:30,891 - data_loader - WARNING - Capping 8 outliers in Income at 102002.30000000002
+2025-04-23 18:47:30,891 - data_loader - WARNING - Found 3 unreasonable birth years. Capping between 1925 and 2007
+2025-04-23 18:47:30,894 - data_loader - WARNING - There are still 41 missing values in the dataset
+2025-04-23 18:47:30,897 - data_loader - INFO - Final data shape: (1567, 29)
+2025-04-23 18:47:30,897 - data_loader - INFO - Missing values after preprocessing: 0
+2025-04-23 18:47:30,898 - data_loader - INFO - Loading data from test.csv
+2025-04-23 18:47:30,901 - data_loader - INFO - Initial data shape: (673, 28)
+2025-04-23 18:47:30,901 - data_loader - INFO - Columns: ID, Year_Birth, Education, Marital_Status, Income, Kidhome, Teenhome, Dt_Customer, Recency, MntWines, MntFruits, MntMeatProducts, MntFishProducts, MntSweetProducts, MntGoldProds, NumDealsPurchases, NumWebPurchases, NumCatalogPurchases, NumStorePurchases, NumWebVisitsMonth, AcceptedCmp3, AcceptedCmp4, AcceptedCmp5, AcceptedCmp1, AcceptedCmp2, Complain, Z_CostContact, Z_Revenue
+2025-04-23 18:47:30,902 - data_loader - WARNING - Missing values detected:
+Income              7
+MntWines           12
+MntMeatProducts     9
+MntGoldProds        7
+dtype: int64
+2025-04-23 18:47:30,902 - data_loader - INFO - Converting Dt_Customer to datetime
+2025-04-23 18:47:30,904 - data_loader - WARNING - Found 268 missing dates. Filling with median: 2013-07-13 00:00:00
+2025-04-23 18:47:30,904 - data_loader - INFO - Creating Days_Since_Registration feature
+2025-04-23 18:47:30,905 - data_loader - INFO - Filling 7 missing Income values with median
+2025-04-23 18:47:30,905 - data_loader - INFO - Processing categorical column: Education
+2025-04-23 18:47:30,905 - data_loader - INFO - Processing categorical column: Marital_Status
+2025-04-23 18:47:30,906 - data_loader - WARNING - Capping 4 outliers in Income at 107665.11999999976
+2025-04-23 18:47:30,907 - data_loader - WARNING - There are still 28 missing values in the dataset
+2025-04-23 18:47:30,909 - data_loader - INFO - Final data shape: (673, 28)
+2025-04-23 18:47:30,909 - data_loader - INFO - Missing values after preprocessing: 0
+2025-04-23 18:47:30,910 - feature_engineering - INFO - Feature Engineer initialized
+2025-04-23 18:47:30,910 - feature_engineering - INFO - Fitting Feature Engineer
+2025-04-23 18:47:30,910 - feature_engineering - INFO - Transforming data with Feature Engineer
+2025-04-23 18:47:30,910 - feature_engineering - INFO - Input data shape: (1567, 29)
+2025-04-23 18:47:30,911 - feature_engineering - INFO - Engineering demographic features
+2025-04-23 18:47:30,912 - feature_engineering - INFO - Engineering purchase behavior features
+2025-04-23 18:47:30,914 - feature_engineering - INFO - Engineering purchase channel features
+2025-04-23 18:47:30,915 - feature_engineering - INFO - Engineering campaign features
+2025-04-23 18:47:30,916 - feature_engineering - INFO - Engineering loyalty and engagement features
+2025-04-23 18:47:30,917 - feature_engineering - INFO - One-hot encoding categorical features
+2025-04-23 18:47:30,917 - feature_engineering - INFO - One-hot encoding Education
+2025-04-23 18:47:30,918 - feature_engineering - INFO - One-hot encoding Marital_Status
+2025-04-23 18:47:30,919 - feature_engineering - INFO - Creating interaction features
+2025-04-23 18:47:30,919 - feature_engineering - INFO - Dropping redundant features
+2025-04-23 18:47:30,920 - feature_engineering - INFO - Output data shape: (1567, 65)
+2025-04-23 18:47:30,920 - feature_engineering - INFO - Engineered features: {'Education_Unknown', 'GoldProdsRatio', 'Education_PhD', 'FamilySize', 'PurchaseFrequency', 'Education_Master', 'ChildAdultRatio', 'DealRatio', 'FishProductsRatio', 'CampaignAcceptanceRate', 'TotalPurchases', 'Marital_Status_Together', 'FruitsRatio', 'Marital_Status_Single', 'WebRatio', 'TenureYears', 'Marital_Status_Widow', 'MeatProductsRatio', 'Marital_Status_Divorced', 'WebEngagementRatio', 'Age', 'CatalogRatio', 'IncomePerMember', 'HasChildren', 'SweetProductsRatio', 'WebEngagement_x_Age', 'Age_x_Income', 'Marital_Status_Unknown', 'WinesRatio', 'Marital_Status_Married', 'StoreRatio', 'RecencyRatio', 'SpentPerPerson', 'TotalSpent', 'Education_Basic', 'TotalAcceptedCampaigns', 'AvgBasketSize', 'SpendingVolatility', 'Education_Graduation'}
+2025-04-23 18:47:30,920 - feature_engineering - INFO - Transforming data with Feature Engineer
+2025-04-23 18:47:30,920 - feature_engineering - INFO - Input data shape: (673, 28)
+2025-04-23 18:47:30,920 - feature_engineering - INFO - Engineering demographic features
+2025-04-23 18:47:30,921 - feature_engineering - INFO - Engineering purchase behavior features
+2025-04-23 18:47:30,923 - feature_engineering - INFO - Engineering purchase channel features
+2025-04-23 18:47:30,924 - feature_engineering - INFO - Engineering campaign features
+2025-04-23 18:47:30,925 - feature_engineering - INFO - Engineering loyalty and engagement features
+2025-04-23 18:47:30,925 - feature_engineering - INFO - One-hot encoding categorical features
+2025-04-23 18:47:30,925 - feature_engineering - INFO - One-hot encoding Education
+2025-04-23 18:47:30,926 - feature_engineering - INFO - One-hot encoding Marital_Status
+2025-04-23 18:47:30,927 - feature_engineering - INFO - Creating interaction features
+2025-04-23 18:47:30,927 - feature_engineering - INFO - Dropping redundant features
+2025-04-23 18:47:30,928 - feature_engineering - INFO - Output data shape: (673, 65)
+2025-04-23 18:47:30,928 - feature_engineering - INFO - Engineered features: {'Education_Unknown', 'GoldProdsRatio', 'Marital_Status_YOLO', 'Education_PhD', 'FamilySize', 'PurchaseFrequency', 'Education_Master', 'ChildAdultRatio', 'DealRatio', 'FishProductsRatio', 'CampaignAcceptanceRate', 'TotalPurchases', 'Marital_Status_Together', 'FruitsRatio', 'Marital_Status_Single', 'WebRatio', 'TenureYears', 'Marital_Status_Widow', 'MeatProductsRatio', 'Marital_Status_Divorced', 'WebEngagementRatio', 'Age', 'CatalogRatio', 'IncomePerMember', 'HasChildren', 'SweetProductsRatio', 'WebEngagement_x_Age', 'Age_x_Income', 'Marital_Status_Unknown', 'WinesRatio', 'Marital_Status_Married', 'StoreRatio', 'RecencyRatio', 'SpentPerPerson', 'TotalSpent', 'Education_Basic', 'TotalAcceptedCampaigns', 'AvgBasketSize', 'SpendingVolatility', 'Education_Graduation'}
+2025-04-23 18:52:42,132 - data_loader - INFO - Loading data from train.csv
+2025-04-23 18:52:42,141 - data_loader - INFO - Initial data shape: (1567, 29)
+2025-04-23 18:52:42,141 - data_loader - INFO - Columns: ID, Year_Birth, Education, Marital_Status, Income, Kidhome, Teenhome, Dt_Customer, Recency, MntWines, MntFruits, MntMeatProducts, MntFishProducts, MntSweetProducts, MntGoldProds, NumDealsPurchases, NumWebPurchases, NumCatalogPurchases, NumStorePurchases, NumWebVisitsMonth, AcceptedCmp3, AcceptedCmp4, AcceptedCmp5, AcceptedCmp1, AcceptedCmp2, Complain, Z_CostContact, Z_Revenue, Target
+2025-04-23 18:52:42,143 - data_loader - WARNING - Missing values detected:
+Income             17
+MntWines           23
+MntMeatProducts     6
+MntGoldProds       12
+dtype: int64
+2025-04-23 18:52:42,143 - data_loader - INFO - Converting Dt_Customer to datetime
+2025-04-23 18:52:42,146 - data_loader - WARNING - Found 919 missing dates. Filling with median: 2013-06-10 00:00:00
+2025-04-23 18:52:42,147 - data_loader - INFO - Creating Days_Since_Registration feature
+2025-04-23 18:52:42,149 - data_loader - INFO - Filling 17 missing Income values with median
+2025-04-23 18:52:42,149 - data_loader - INFO - Processing categorical column: Education
+2025-04-23 18:52:42,149 - data_loader - INFO - Processing categorical column: Marital_Status
+2025-04-23 18:52:42,150 - data_loader - WARNING - Capping 8 outliers in Income at 102002.30000000002
+2025-04-23 18:52:42,151 - data_loader - WARNING - Found 3 unreasonable birth years. Capping between 1925 and 2007
+2025-04-23 18:52:42,153 - data_loader - WARNING - There are still 41 missing values in the dataset
+2025-04-23 18:52:42,155 - data_loader - INFO - Final data shape: (1567, 29)
+2025-04-23 18:52:42,156 - data_loader - INFO - Missing values after preprocessing: 0
+2025-04-23 18:52:42,156 - data_loader - INFO - Loading data from test.csv
+2025-04-23 18:52:42,159 - data_loader - INFO - Initial data shape: (673, 28)
+2025-04-23 18:52:42,159 - data_loader - INFO - Columns: ID, Year_Birth, Education, Marital_Status, Income, Kidhome, Teenhome, Dt_Customer, Recency, MntWines, MntFruits, MntMeatProducts, MntFishProducts, MntSweetProducts, MntGoldProds, NumDealsPurchases, NumWebPurchases, NumCatalogPurchases, NumStorePurchases, NumWebVisitsMonth, AcceptedCmp3, AcceptedCmp4, AcceptedCmp5, AcceptedCmp1, AcceptedCmp2, Complain, Z_CostContact, Z_Revenue
+2025-04-23 18:52:42,160 - data_loader - WARNING - Missing values detected:
+Income              7
+MntWines           12
+MntMeatProducts     9
+MntGoldProds        7
+dtype: int64
+2025-04-23 18:52:42,160 - data_loader - INFO - Converting Dt_Customer to datetime
+2025-04-23 18:52:42,163 - data_loader - WARNING - Found 268 missing dates. Filling with median: 2013-07-13 00:00:00
+2025-04-23 18:52:42,163 - data_loader - INFO - Creating Days_Since_Registration feature
+2025-04-23 18:52:42,163 - data_loader - INFO - Filling 7 missing Income values with median
+2025-04-23 18:52:42,163 - data_loader - INFO - Processing categorical column: Education
+2025-04-23 18:52:42,164 - data_loader - INFO - Processing categorical column: Marital_Status
+2025-04-23 18:52:42,165 - data_loader - WARNING - Capping 4 outliers in Income at 107665.11999999976
+2025-04-23 18:52:42,165 - data_loader - WARNING - There are still 28 missing values in the dataset
+2025-04-23 18:52:42,168 - data_loader - INFO - Final data shape: (673, 28)
+2025-04-23 18:52:42,168 - data_loader - INFO - Missing values after preprocessing: 0
+2025-04-23 18:52:42,169 - feature_engineering - INFO - Feature Engineer initialized
+2025-04-23 18:52:42,169 - feature_engineering - INFO - Fitting Feature Engineer
+2025-04-23 18:52:42,169 - feature_engineering - INFO - Transforming data with Feature Engineer
+2025-04-23 18:52:42,169 - feature_engineering - INFO - Input data shape: (1567, 29)
+2025-04-23 18:52:42,169 - feature_engineering - INFO - Engineering demographic features
+2025-04-23 18:52:42,170 - feature_engineering - INFO - Engineering purchase behavior features
+2025-04-23 18:52:42,172 - feature_engineering - INFO - Engineering purchase channel features
+2025-04-23 18:52:42,173 - feature_engineering - INFO - Engineering campaign features
+2025-04-23 18:52:42,174 - feature_engineering - INFO - Engineering loyalty and engagement features
+2025-04-23 18:52:42,174 - feature_engineering - INFO - One-hot encoding categorical features
+2025-04-23 18:52:42,175 - feature_engineering - INFO - One-hot encoding Education
+2025-04-23 18:52:42,176 - feature_engineering - INFO - One-hot encoding Marital_Status
+2025-04-23 18:52:42,176 - feature_engineering - INFO - Creating interaction features
+2025-04-23 18:52:42,177 - feature_engineering - INFO - Dropping redundant features
+2025-04-23 18:52:42,177 - feature_engineering - INFO - Output data shape: (1567, 65)
+2025-04-23 18:52:42,177 - feature_engineering - INFO - Engineered features: {'FruitsRatio', 'Age', 'HasChildren', 'Education_Graduation', 'TenureYears', 'Marital_Status_Widow', 'StoreRatio', 'PurchaseFrequency', 'RecencyRatio', 'FishProductsRatio', 'CampaignAcceptanceRate', 'Education_Unknown', 'Education_Basic', 'Marital_Status_Unknown', 'MeatProductsRatio', 'Education_Master', 'Marital_Status_Divorced', 'WebRatio', 'DealRatio', 'Education_PhD', 'TotalPurchases', 'AvgBasketSize', 'CatalogRatio', 'WebEngagement_x_Age', 'Age_x_Income', 'FamilySize', 'TotalAcceptedCampaigns', 'SweetProductsRatio', 'WebEngagementRatio', 'WinesRatio', 'IncomePerMember', 'SpendingVolatility', 'Marital_Status_Single', 'Marital_Status_Together', 'GoldProdsRatio', 'SpentPerPerson', 'Marital_Status_Married', 'ChildAdultRatio', 'TotalSpent'}
+2025-04-23 18:52:42,177 - feature_engineering - INFO - Transforming data with Feature Engineer
+2025-04-23 18:52:42,178 - feature_engineering - INFO - Input data shape: (673, 28)
+2025-04-23 18:52:42,178 - feature_engineering - INFO - Engineering demographic features
+2025-04-23 18:52:42,179 - feature_engineering - INFO - Engineering purchase behavior features
+2025-04-23 18:52:42,181 - feature_engineering - INFO - Engineering purchase channel features
+2025-04-23 18:52:42,182 - feature_engineering - INFO - Engineering campaign features
+2025-04-23 18:52:42,182 - feature_engineering - INFO - Engineering loyalty and engagement features
+2025-04-23 18:52:42,183 - feature_engineering - INFO - One-hot encoding categorical features
+2025-04-23 18:52:42,183 - feature_engineering - INFO - One-hot encoding Education
+2025-04-23 18:52:42,184 - feature_engineering - INFO - One-hot encoding Marital_Status
+2025-04-23 18:52:42,184 - feature_engineering - INFO - Creating interaction features
+2025-04-23 18:52:42,185 - feature_engineering - INFO - Dropping redundant features
+2025-04-23 18:52:42,185 - feature_engineering - INFO - Output data shape: (673, 65)
+2025-04-23 18:52:42,185 - feature_engineering - INFO - Engineered features: {'FruitsRatio', 'Age', 'HasChildren', 'Education_Graduation', 'TenureYears', 'Marital_Status_Widow', 'StoreRatio', 'PurchaseFrequency', 'RecencyRatio', 'FishProductsRatio', 'CampaignAcceptanceRate', 'Education_Unknown', 'Marital_Status_YOLO', 'Education_Basic', 'Marital_Status_Unknown', 'MeatProductsRatio', 'Education_Master', 'Marital_Status_Divorced', 'WebRatio', 'DealRatio', 'Education_PhD', 'TotalPurchases', 'AvgBasketSize', 'CatalogRatio', 'WebEngagement_x_Age', 'Age_x_Income', 'FamilySize', 'TotalAcceptedCampaigns', 'SweetProductsRatio', 'WebEngagementRatio', 'WinesRatio', 'IncomePerMember', 'SpendingVolatility', 'Marital_Status_Single', 'Marital_Status_Together', 'GoldProdsRatio', 'SpentPerPerson', 'Marital_Status_Married', 'ChildAdultRatio', 'TotalSpent'}
+2025-04-23 18:55:55,185 - data_loader - INFO - Loading data from train.csv
+2025-04-23 18:55:55,193 - data_loader - INFO - Initial data shape: (1567, 29)
+2025-04-23 18:55:55,193 - data_loader - INFO - Columns: ID, Year_Birth, Education, Marital_Status, Income, Kidhome, Teenhome, Dt_Customer, Recency, MntWines, MntFruits, MntMeatProducts, MntFishProducts, MntSweetProducts, MntGoldProds, NumDealsPurchases, NumWebPurchases, NumCatalogPurchases, NumStorePurchases, NumWebVisitsMonth, AcceptedCmp3, AcceptedCmp4, AcceptedCmp5, AcceptedCmp1, AcceptedCmp2, Complain, Z_CostContact, Z_Revenue, Target
+2025-04-23 18:55:55,195 - data_loader - WARNING - Missing values detected:
+Income             17
+MntWines           23
+MntMeatProducts     6
+MntGoldProds       12
+dtype: int64
+2025-04-23 18:55:55,195 - data_loader - INFO - Converting Dt_Customer to datetime
+2025-04-23 18:55:55,199 - data_loader - WARNING - Found 919 missing dates. Filling with median: 2013-06-10 00:00:00
+2025-04-23 18:55:55,199 - data_loader - INFO - Creating Days_Since_Registration feature
+2025-04-23 18:55:55,201 - data_loader - INFO - Filling 17 missing Income values with median
+2025-04-23 18:55:55,201 - data_loader - INFO - Processing categorical column: Education
+2025-04-23 18:55:55,201 - data_loader - INFO - Processing categorical column: Marital_Status
+2025-04-23 18:55:55,202 - data_loader - WARNING - Capping 8 outliers in Income at 102002.30000000002
+2025-04-23 18:55:55,203 - data_loader - WARNING - Found 3 unreasonable birth years. Capping between 1925 and 2007
+2025-04-23 18:55:55,205 - data_loader - WARNING - There are still 41 missing values in the dataset
+2025-04-23 18:55:55,207 - data_loader - INFO - Final data shape: (1567, 29)
+2025-04-23 18:55:55,208 - data_loader - INFO - Missing values after preprocessing: 0
+2025-04-23 18:55:55,209 - data_loader - INFO - Loading data from test.csv
+2025-04-23 18:55:55,212 - data_loader - INFO - Initial data shape: (673, 28)
+2025-04-23 18:55:55,212 - data_loader - INFO - Columns: ID, Year_Birth, Education, Marital_Status, Income, Kidhome, Teenhome, Dt_Customer, Recency, MntWines, MntFruits, MntMeatProducts, MntFishProducts, MntSweetProducts, MntGoldProds, NumDealsPurchases, NumWebPurchases, NumCatalogPurchases, NumStorePurchases, NumWebVisitsMonth, AcceptedCmp3, AcceptedCmp4, AcceptedCmp5, AcceptedCmp1, AcceptedCmp2, Complain, Z_CostContact, Z_Revenue
+2025-04-23 18:55:55,212 - data_loader - WARNING - Missing values detected:
+Income              7
+MntWines           12
+MntMeatProducts     9
+MntGoldProds        7
+dtype: int64
+2025-04-23 18:55:55,213 - data_loader - INFO - Converting Dt_Customer to datetime
+2025-04-23 18:55:55,215 - data_loader - WARNING - Found 268 missing dates. Filling with median: 2013-07-13 00:00:00
+2025-04-23 18:55:55,215 - data_loader - INFO - Creating Days_Since_Registration feature
+2025-04-23 18:55:55,216 - data_loader - INFO - Filling 7 missing Income values with median
+2025-04-23 18:55:55,216 - data_loader - INFO - Processing categorical column: Education
+2025-04-23 18:55:55,216 - data_loader - INFO - Processing categorical column: Marital_Status
+2025-04-23 18:55:55,217 - data_loader - WARNING - Capping 4 outliers in Income at 107665.11999999976
+2025-04-23 18:55:55,218 - data_loader - WARNING - There are still 28 missing values in the dataset
+2025-04-23 18:55:55,220 - data_loader - INFO - Final data shape: (673, 28)
+2025-04-23 18:55:55,221 - data_loader - INFO - Missing values after preprocessing: 0
+2025-04-23 18:55:55,221 - feature_engineering - INFO - Feature Engineer initialized
+2025-04-23 18:55:55,221 - feature_engineering - INFO - Fitting Feature Engineer
+2025-04-23 18:55:55,221 - feature_engineering - INFO - Transforming data with Feature Engineer
+2025-04-23 18:55:55,221 - feature_engineering - INFO - Input data shape: (1567, 29)
+2025-04-23 18:55:55,222 - feature_engineering - INFO - Engineering demographic features
+2025-04-23 18:55:55,223 - feature_engineering - INFO - Engineering purchase behavior features
+2025-04-23 18:55:55,225 - feature_engineering - INFO - Engineering purchase channel features
+2025-04-23 18:55:55,226 - feature_engineering - INFO - Engineering campaign features
+2025-04-23 18:55:55,227 - feature_engineering - INFO - Engineering loyalty and engagement features
+2025-04-23 18:55:55,227 - feature_engineering - INFO - One-hot encoding categorical features
+2025-04-23 18:55:55,227 - feature_engineering - INFO - One-hot encoding Education
+2025-04-23 18:55:55,228 - feature_engineering - INFO - One-hot encoding Marital_Status
+2025-04-23 18:55:55,229 - feature_engineering - INFO - Creating interaction features
+2025-04-23 18:55:55,229 - feature_engineering - INFO - Dropping redundant features
+2025-04-23 18:55:55,230 - feature_engineering - INFO - Output data shape: (1567, 65)
+2025-04-23 18:55:55,230 - feature_engineering - INFO - Engineered features: {'GoldProdsRatio', 'Marital_Status_Widow', 'Education_Master', 'TotalPurchases', 'FishProductsRatio', 'Marital_Status_Divorced', 'Education_Graduation', 'Marital_Status_Single', 'FamilySize', 'TotalAcceptedCampaigns', 'DealRatio', 'CatalogRatio', 'WebEngagement_x_Age', 'TotalSpent', 'IncomePerMember', 'FruitsRatio', 'PurchaseFrequency', 'ChildAdultRatio', 'RecencyRatio', 'WebEngagementRatio', 'StoreRatio', 'TenureYears', 'MeatProductsRatio', 'Education_PhD', 'SpentPerPerson', 'SpendingVolatility', 'WebRatio', 'Education_Basic', 'WinesRatio', 'Marital_Status_Married', 'Marital_Status_Unknown', 'CampaignAcceptanceRate', 'SweetProductsRatio', 'HasChildren', 'Age', 'AvgBasketSize', 'Marital_Status_Together', 'Age_x_Income', 'Education_Unknown'}
+2025-04-23 18:55:55,230 - feature_engineering - INFO - Transforming data with Feature Engineer
+2025-04-23 18:55:55,230 - feature_engineering - INFO - Input data shape: (673, 28)
+2025-04-23 18:55:55,231 - feature_engineering - INFO - Engineering demographic features
+2025-04-23 18:55:55,232 - feature_engineering - INFO - Engineering purchase behavior features
+2025-04-23 18:55:55,233 - feature_engineering - INFO - Engineering purchase channel features
+2025-04-23 18:55:55,234 - feature_engineering - INFO - Engineering campaign features
+2025-04-23 18:55:55,235 - feature_engineering - INFO - Engineering loyalty and engagement features
+2025-04-23 18:55:55,235 - feature_engineering - INFO - One-hot encoding categorical features
+2025-04-23 18:55:55,236 - feature_engineering - INFO - One-hot encoding Education
+2025-04-23 18:55:55,236 - feature_engineering - INFO - One-hot encoding Marital_Status
+2025-04-23 18:55:55,237 - feature_engineering - INFO - Creating interaction features
+2025-04-23 18:55:55,237 - feature_engineering - INFO - Dropping redundant features
+2025-04-23 18:55:55,238 - feature_engineering - INFO - Output data shape: (673, 65)
+2025-04-23 18:55:55,238 - feature_engineering - INFO - Engineered features: {'GoldProdsRatio', 'Marital_Status_Widow', 'Education_Master', 'TotalPurchases', 'FishProductsRatio', 'Marital_Status_Divorced', 'Education_Graduation', 'Marital_Status_Single', 'FamilySize', 'TotalAcceptedCampaigns', 'DealRatio', 'CatalogRatio', 'WebEngagement_x_Age', 'TotalSpent', 'IncomePerMember', 'FruitsRatio', 'PurchaseFrequency', 'ChildAdultRatio', 'RecencyRatio', 'WebEngagementRatio', 'StoreRatio', 'TenureYears', 'MeatProductsRatio', 'Education_PhD', 'SpentPerPerson', 'SpendingVolatility', 'WebRatio', 'Education_Basic', 'WinesRatio', 'Marital_Status_Married', 'Marital_Status_YOLO', 'Marital_Status_Unknown', 'CampaignAcceptanceRate', 'SweetProductsRatio', 'HasChildren', 'Age', 'AvgBasketSize', 'Marital_Status_Together', 'Age_x_Income', 'Education_Unknown'}

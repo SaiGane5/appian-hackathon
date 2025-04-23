@@ -1,0 +1,19 @@
+{
+    "timestamp": "20250423_173607",
+    "best_model": "xgboost",
+    "feature_count": 69,
+    "train_samples": 1567,
+    "test_samples": 673,
+    "positive_predictions": 245,
+    "positive_rate": 0.3640416047548291,
+    "best_metrics": {
+        "accuracy": 0.7802547770700637,
+        "balanced_accuracy": 0.7560621584699454,
+        "precision": 0.7523809523809524,
+        "recall": 0.6475409836065574,
+        "f1": 0.6960352422907489,
+        "cohen_kappa": 0.5254719873844671,
+        "roc_auc": 0.8883196721311475,
+        "average_precision": 0.8429426204493811
+    }
+}

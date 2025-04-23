@@ -248,3 +248,270 @@ dtype: int64
 2025-04-23 16:59:49,177 - main - INFO - Step 6: Making predictions on test data
 2025-04-23 16:59:49,187 - main - INFO - Submission saved to submissions/submission.csv
 2025-04-23 16:59:49,187 - main - INFO - Pipeline completed successfully
+2025-04-23 17:36:07,613 - main - INFO - Starting Appian product purchase prediction pipeline at 20250423_173607
+2025-04-23 17:36:07,613 - main - INFO - Step 1: Loading and preprocessing data
+2025-04-23 17:36:07,613 - data_loader - INFO - Loading data from train.csv
+2025-04-23 17:36:07,623 - data_loader - INFO - Initial data shape: (1567, 29)
+2025-04-23 17:36:07,623 - data_loader - INFO - Columns: ID, Year_Birth, Education, Marital_Status, Income, Kidhome, Teenhome, Dt_Customer, Recency, MntWines, MntFruits, MntMeatProducts, MntFishProducts, MntSweetProducts, MntGoldProds, NumDealsPurchases, NumWebPurchases, NumCatalogPurchases, NumStorePurchases, NumWebVisitsMonth, AcceptedCmp3, AcceptedCmp4, AcceptedCmp5, AcceptedCmp1, AcceptedCmp2, Complain, Z_CostContact, Z_Revenue, Target
+2025-04-23 17:36:07,625 - data_loader - WARNING - Missing values detected:
+Income             17
+MntWines           23
+MntMeatProducts     6
+MntGoldProds       12
+dtype: int64
+2025-04-23 17:36:07,625 - data_loader - INFO - Converting Dt_Customer to datetime
+2025-04-23 17:36:07,629 - data_loader - WARNING - Found 919 missing dates. Filling with median: 2013-06-10 00:00:00
+2025-04-23 17:36:07,629 - data_loader - INFO - Creating Days_Since_Registration feature
+2025-04-23 17:36:07,631 - data_loader - INFO - Filling 17 missing Income values with median
+2025-04-23 17:36:07,631 - data_loader - INFO - Processing categorical column: Education
+2025-04-23 17:36:07,631 - data_loader - INFO - Processing categorical column: Marital_Status
+2025-04-23 17:36:07,632 - data_loader - WARNING - Capping 8 outliers in Income at 102002.30000000002
+2025-04-23 17:36:07,633 - data_loader - WARNING - Found 3 unreasonable birth years. Capping between 1925 and 2007
+2025-04-23 17:36:07,635 - data_loader - WARNING - There are still 41 missing values in the dataset
+2025-04-23 17:36:07,638 - data_loader - INFO - Final data shape: (1567, 29)
+2025-04-23 17:36:07,638 - data_loader - INFO - Missing values after preprocessing: 0
+2025-04-23 17:36:07,639 - data_loader - INFO - Loading data from test.csv
+2025-04-23 17:36:07,642 - data_loader - INFO - Initial data shape: (673, 28)
+2025-04-23 17:36:07,642 - data_loader - INFO - Columns: ID, Year_Birth, Education, Marital_Status, Income, Kidhome, Teenhome, Dt_Customer, Recency, MntWines, MntFruits, MntMeatProducts, MntFishProducts, MntSweetProducts, MntGoldProds, NumDealsPurchases, NumWebPurchases, NumCatalogPurchases, NumStorePurchases, NumWebVisitsMonth, AcceptedCmp3, AcceptedCmp4, AcceptedCmp5, AcceptedCmp1, AcceptedCmp2, Complain, Z_CostContact, Z_Revenue
+2025-04-23 17:36:07,643 - data_loader - WARNING - Missing values detected:
+Income              7
+MntWines           12
+MntMeatProducts     9
+MntGoldProds        7
+dtype: int64
+2025-04-23 17:36:07,643 - data_loader - INFO - Converting Dt_Customer to datetime
+2025-04-23 17:36:07,645 - data_loader - WARNING - Found 268 missing dates. Filling with median: 2013-07-13 00:00:00
+2025-04-23 17:36:07,645 - data_loader - INFO - Creating Days_Since_Registration feature
+2025-04-23 17:36:07,646 - data_loader - INFO - Filling 7 missing Income values with median
+2025-04-23 17:36:07,646 - data_loader - INFO - Processing categorical column: Education
+2025-04-23 17:36:07,646 - data_loader - INFO - Processing categorical column: Marital_Status
+2025-04-23 17:36:07,647 - data_loader - WARNING - Capping 4 outliers in Income at 107665.11999999976
+2025-04-23 17:36:07,648 - data_loader - WARNING - There are still 28 missing values in the dataset
+2025-04-23 17:36:07,650 - data_loader - INFO - Final data shape: (673, 28)
+2025-04-23 17:36:07,650 - data_loader - INFO - Missing values after preprocessing: 0
+2025-04-23 17:36:07,651 - main - INFO - Step 2: Performing Exploratory Data Analysis
+2025-04-23 17:36:07,651 - eda - INFO - EDA component initialized
+2025-04-23 17:36:07,651 - eda - INFO - Running EDA on dataset with shape (1567, 29)
+2025-04-23 17:36:07,672 - eda - INFO - Basic stats written to debug/data_stats.txt
+2025-04-23 17:36:07,672 - eda - INFO - Analyzing target distribution
+2025-04-23 17:36:07,805 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:07,811 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:07,858 - eda - INFO - Target distribution: {0: np.int64(960), 1: np.int64(607)}
+2025-04-23 17:36:07,858 - eda - INFO - Class ratios: {0: np.float64(0.612635609444799), 1: np.float64(0.387364390555201)}
+2025-04-23 17:36:07,859 - eda - INFO - Analyzing customer demographics
+2025-04-23 17:36:07,925 - eda - INFO - Age statistics: mean=56.1, min=29.0, max=100.0
+2025-04-23 17:36:08,016 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:08,019 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:08,049 - eda - INFO - Income statistics: mean=51833.58, median=51277.00
+2025-04-23 17:36:08,107 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:08,110 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:08,145 - eda - INFO - Analyzing purchase behavior
+2025-04-23 17:36:08,157 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:08,160 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:08,562 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:08,564 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:08,640 - eda - INFO - Analyzing campaign response patterns
+2025-04-23 17:36:08,807 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:08,810 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:08,842 - eda - INFO - Analyzing purchase channels
+2025-04-23 17:36:08,949 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:08,952 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:08,998 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,001 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,030 - eda - INFO - Analyzing feature correlations
+2025-04-23 17:36:09,441 - eda - INFO - Top 5 positive correlations with target: {'MntWines': 0.499265942082046, 'TotalPurchases': 0.4727591778249118, 'TotalSpend': 0.46197360830599676, 'NumWebPurchases': 0.4537196302808503, 'TotalAcceptedCampaigns': 0.41027626226778147}
+2025-04-23 17:36:09,441 - eda - INFO - Top 5 negative correlations with target: {'StoreProportion': -0.29113429367552535, 'Kidhome': -0.29272050565332336, 'Recency': -0.3281900153174449, 'Z_CostContact': nan, 'Z_Revenue': nan}
+2025-04-23 17:36:09,442 - eda - INFO - Analyzing feature importance
+2025-04-23 17:36:09,681 - eda - INFO - Top 5 important features: ['Recency', 'TotalPurchases', 'MntWines', 'NumWebPurchases', 'TotalSpend']
+2025-04-23 17:36:09,681 - eda - INFO - EDA completed successfully
+2025-04-23 17:36:09,681 - main - INFO - Step 3: Engineering features
+2025-04-23 17:36:09,681 - feature_engineering - INFO - Feature Engineer initialized
+2025-04-23 17:36:09,681 - feature_engineering - INFO - Fitting Feature Engineer
+2025-04-23 17:36:09,681 - feature_engineering - INFO - Transforming data with Feature Engineer
+2025-04-23 17:36:09,681 - feature_engineering - INFO - Input data shape: (1567, 39)
+2025-04-23 17:36:09,682 - feature_engineering - INFO - Engineering demographic features
+2025-04-23 17:36:09,683 - feature_engineering - INFO - Engineering purchase behavior features
+2025-04-23 17:36:09,685 - feature_engineering - INFO - Engineering purchase channel features
+2025-04-23 17:36:09,686 - feature_engineering - INFO - Engineering campaign features
+2025-04-23 17:36:09,686 - feature_engineering - INFO - Engineering loyalty and engagement features
+2025-04-23 17:36:09,687 - feature_engineering - INFO - One-hot encoding categorical features
+2025-04-23 17:36:09,687 - feature_engineering - INFO - One-hot encoding Education
+2025-04-23 17:36:09,688 - feature_engineering - INFO - One-hot encoding Marital_Status
+2025-04-23 17:36:09,689 - feature_engineering - INFO - Creating interaction features
+2025-04-23 17:36:09,689 - feature_engineering - INFO - Generating feature importance visualizations
+2025-04-23 17:36:09,702 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,705 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,720 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,723 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,737 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,739 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,752 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,754 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,768 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,770 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,784 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:09,786 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-23 17:36:10,027 - feature_engineering - INFO - Dropping redundant features
+2025-04-23 17:36:10,028 - feature_engineering - INFO - Output data shape: (1567, 71)
+2025-04-23 17:36:10,028 - feature_engineering - INFO - Engineered features: {'WebEngagementRatio', 'StoreRatio', 'Education_Unknown', 'Education_Graduation', 'MeatProductsRatio', 'PurchaseFrequency', 'Marital_Status_Unknown', 'CampaignAcceptanceRate', 'FruitsRatio', 'WinesRatio', 'HasChildren', 'Marital_Status_Divorced', 'Marital_Status_Widow', 'Marital_Status_Married', 'WebRatio', 'Education_Basic', 'FishProductsRatio', 'Education_PhD', 'ChildAdultRatio', 'GoldProdsRatio', 'IncomePerMember', 'TenureYears', 'SpendingVolatility', 'SpentPerPerson', 'TotalSpent', 'RecencyRatio', 'Age_x_Income', 'Marital_Status_Single', 'AvgBasketSize', 'Marital_Status_Together', 'WebEngagement_x_Age', 'CatalogRatio', 'DealRatio', 'Education_Master', 'SweetProductsRatio'}
+2025-04-23 17:36:10,028 - feature_engineering - INFO - Transforming data with Feature Engineer
+2025-04-23 17:36:10,028 - feature_engineering - INFO - Input data shape: (673, 28)
+2025-04-23 17:36:10,029 - feature_engineering - INFO - Engineering demographic features
+2025-04-23 17:36:10,030 - feature_engineering - INFO - Engineering purchase behavior features
+2025-04-23 17:36:10,032 - feature_engineering - INFO - Engineering purchase channel features
+2025-04-23 17:36:10,033 - feature_engineering - INFO - Engineering campaign features
+2025-04-23 17:36:10,033 - feature_engineering - INFO - Engineering loyalty and engagement features
+2025-04-23 17:36:10,034 - feature_engineering - INFO - One-hot encoding categorical features
+2025-04-23 17:36:10,034 - feature_engineering - INFO - One-hot encoding Education
+2025-04-23 17:36:10,035 - feature_engineering - INFO - One-hot encoding Marital_Status
+2025-04-23 17:36:10,035 - feature_engineering - INFO - Creating interaction features
+2025-04-23 17:36:10,036 - feature_engineering - INFO - Dropping redundant features
+2025-04-23 17:36:10,036 - feature_engineering - INFO - Output data shape: (673, 65)
+2025-04-23 17:36:10,036 - feature_engineering - INFO - Engineered features: {'WebEngagementRatio', 'StoreRatio', 'Education_Unknown', 'Education_Graduation', 'MeatProductsRatio', 'PurchaseFrequency', 'Marital_Status_Unknown', 'CampaignAcceptanceRate', 'FruitsRatio', 'WinesRatio', 'HasChildren', 'Marital_Status_Divorced', 'Marital_Status_Widow', 'Marital_Status_Married', 'WebRatio', 'Education_Basic', 'FishProductsRatio', 'Education_PhD', 'ChildAdultRatio', 'GoldProdsRatio', 'IncomePerMember', 'TenureYears', 'SpendingVolatility', 'SpentPerPerson', 'TotalSpent', 'RecencyRatio', 'Age_x_Income', 'Marital_Status_Single', 'AvgBasketSize', 'Marital_Status_Together', 'WebEngagement_x_Age', 'CatalogRatio', 'DealRatio', 'Marital_Status_YOLO', 'Education_Master', 'SweetProductsRatio'}
+2025-04-23 17:36:10,064 - main - INFO - Step 4: Training models
+2025-04-23 17:36:10,064 - train_model - INFO - ModelTrainer initialized
+2025-04-23 17:36:10,064 - train_model - INFO - Starting full training pipeline
+2025-04-23 17:36:10,064 - train_model - INFO - Preparing data with test_size=0.2, stratify=True
+2025-04-23 17:36:10,067 - train_model - INFO - Data split: X_train=(1253, 69), X_test=(314, 69)
+2025-04-23 17:36:10,067 - train_model - INFO - Class distribution in train: {0: np.int64(768), 1: np.int64(485)}
+2025-04-23 17:36:10,067 - train_model - INFO - Class distribution in test: {0: np.int64(192), 1: np.int64(122)}
+2025-04-23 17:36:10,067 - train_model - INFO - Training and evaluating models with cv=5, scoring=roc_auc
+2025-04-23 17:36:10,067 - train_model - INFO - Defining classification models
+2025-04-23 17:36:10,067 - train_model - INFO - Defined 8 classification models
+2025-04-23 17:36:10,067 - train_model - INFO - Defining hyperparameter grids
+2025-04-23 17:36:10,067 - train_model - INFO - Hyperparameter grids defined
+2025-04-23 17:36:10,067 - train_model - INFO - Training logistic_regression...
+2025-04-23 17:36:11,941 - train_model - INFO - logistic_regression results:
+2025-04-23 17:36:11,941 - train_model - INFO -   Best parameters: {'classifier__C': 0.1, 'classifier__class_weight': 'balanced', 'classifier__penalty': 'l2', 'classifier__solver': 'liblinear'}
+2025-04-23 17:36:11,941 - train_model - INFO -   Best CV roc_auc: 0.9178
+2025-04-23 17:36:11,941 - train_model - INFO -   Test accuracy: 0.7771
+2025-04-23 17:36:11,941 - train_model - INFO -   Test precision: 0.7000
+2025-04-23 17:36:11,941 - train_model - INFO -   Test recall: 0.7459
+2025-04-23 17:36:11,941 - train_model - INFO -   Test F1: 0.7222
+2025-04-23 17:36:11,941 - train_model - INFO -   Test ROC AUC: 0.8804
+2025-04-23 17:36:12,031 - train_model - INFO - New best model: logistic_regression with ROC AUC = 0.8804
+2025-04-23 17:36:12,031 - train_model - INFO - Training random_forest...
+2025-04-23 17:36:26,945 - train_model - INFO - random_forest results:
+2025-04-23 17:36:26,946 - train_model - INFO -   Best parameters: {'classifier__class_weight': None, 'classifier__max_depth': 10, 'classifier__min_samples_split': 10, 'classifier__n_estimators': 200}
+2025-04-23 17:36:26,946 - train_model - INFO -   Best CV roc_auc: 0.9057
+2025-04-23 17:36:26,946 - train_model - INFO -   Test accuracy: 0.7739
+2025-04-23 17:36:26,946 - train_model - INFO -   Test precision: 0.7383
+2025-04-23 17:36:26,946 - train_model - INFO -   Test recall: 0.6475
+2025-04-23 17:36:26,946 - train_model - INFO -   Test F1: 0.6900
+2025-04-23 17:36:26,946 - train_model - INFO -   Test ROC AUC: 0.8610
+2025-04-23 17:36:27,040 - train_model - INFO - Training gradient_boosting...
+2025-04-23 17:36:44,181 - train_model - INFO - gradient_boosting results:
+2025-04-23 17:36:44,182 - train_model - INFO -   Best parameters: {'classifier__learning_rate': 0.1, 'classifier__max_depth': 3, 'classifier__n_estimators': 100, 'classifier__subsample': 1.0}
+2025-04-23 17:36:44,182 - train_model - INFO -   Best CV roc_auc: 0.9205
+2025-04-23 17:36:44,182 - train_model - INFO -   Test accuracy: 0.7739
+2025-04-23 17:36:44,182 - train_model - INFO -   Test precision: 0.7476
+2025-04-23 17:36:44,182 - train_model - INFO -   Test recall: 0.6311
+2025-04-23 17:36:44,182 - train_model - INFO -   Test F1: 0.6844
+2025-04-23 17:36:44,182 - train_model - INFO -   Test ROC AUC: 0.8835
+2025-04-23 17:36:44,288 - train_model - INFO - New best model: gradient_boosting with ROC AUC = 0.8835
+2025-04-23 17:36:44,288 - train_model - INFO - Training xgboost...
+2025-04-23 17:36:50,754 - train_model - INFO - xgboost results:
+2025-04-23 17:36:50,756 - train_model - INFO -   Best parameters: {'classifier__colsample_bytree': 0.8, 'classifier__learning_rate': 0.1, 'classifier__max_depth': 3, 'classifier__n_estimators': 100, 'classifier__subsample': 1.0}
+2025-04-23 17:36:50,757 - train_model - INFO -   Best CV roc_auc: 0.9241
+2025-04-23 17:36:50,757 - train_model - INFO -   Test accuracy: 0.7803
+2025-04-23 17:36:50,757 - train_model - INFO -   Test precision: 0.7524
+2025-04-23 17:36:50,757 - train_model - INFO -   Test recall: 0.6475
+2025-04-23 17:36:50,757 - train_model - INFO -   Test F1: 0.6960
+2025-04-23 17:36:50,757 - train_model - INFO -   Test ROC AUC: 0.8883
+2025-04-23 17:36:50,854 - train_model - INFO - New best model: xgboost with ROC AUC = 0.8883
+2025-04-23 17:36:50,854 - train_model - INFO - Training lightgbm...
+2025-04-23 17:37:43,223 - train_model - INFO - lightgbm results:
+2025-04-23 17:37:43,223 - train_model - INFO -   Best parameters: {'classifier__class_weight': None, 'classifier__learning_rate': 0.1, 'classifier__max_depth': 3, 'classifier__n_estimators': 100, 'classifier__subsample': 0.8}
+2025-04-23 17:37:43,223 - train_model - INFO -   Best CV roc_auc: 0.9227
+2025-04-23 17:37:43,223 - train_model - INFO -   Test accuracy: 0.7898
+2025-04-23 17:37:43,223 - train_model - INFO -   Test precision: 0.7642
+2025-04-23 17:37:43,224 - train_model - INFO -   Test recall: 0.6639
+2025-04-23 17:37:43,224 - train_model - INFO -   Test F1: 0.7105
+2025-04-23 17:37:43,224 - train_model - INFO -   Test ROC AUC: 0.8879
+2025-04-23 17:37:43,326 - train_model - INFO - Training svm...
+2025-04-23 17:37:49,190 - train_model - INFO - svm results:
+2025-04-23 17:37:49,190 - train_model - INFO -   Best parameters: {'classifier__C': 0.1, 'classifier__gamma': 'scale', 'classifier__kernel': 'linear'}
+2025-04-23 17:37:49,190 - train_model - INFO -   Best CV roc_auc: 0.9123
+2025-04-23 17:37:49,190 - train_model - INFO -   Test accuracy: 0.7834
+2025-04-23 17:37:49,190 - train_model - INFO -   Test precision: 0.7411
+2025-04-23 17:37:49,190 - train_model - INFO -   Test recall: 0.6803
+2025-04-23 17:37:49,190 - train_model - INFO -   Test F1: 0.7094
+2025-04-23 17:37:49,190 - train_model - INFO -   Test ROC AUC: 0.8801
+2025-04-23 17:37:49,276 - train_model - INFO - Training knn...
+2025-04-23 17:37:50,026 - train_model - INFO - knn results:
+2025-04-23 17:37:50,027 - train_model - INFO -   Best parameters: {'classifier__n_neighbors': 11, 'classifier__p': 1, 'classifier__weights': 'uniform'}
+2025-04-23 17:37:50,027 - train_model - INFO -   Best CV roc_auc: 0.8828
+2025-04-23 17:37:50,027 - train_model - INFO -   Test accuracy: 0.7707
+2025-04-23 17:37:50,027 - train_model - INFO -   Test precision: 0.7500
+2025-04-23 17:37:50,027 - train_model - INFO -   Test recall: 0.6148
+2025-04-23 17:37:50,027 - train_model - INFO -   Test F1: 0.6757
+2025-04-23 17:37:50,027 - train_model - INFO -   Test ROC AUC: 0.8415
+2025-04-23 17:37:50,115 - train_model - INFO - Training decision_tree...
+2025-04-23 17:37:50,881 - train_model - INFO - decision_tree results:
+2025-04-23 17:37:50,881 - train_model - INFO -   Best parameters: {'classifier__class_weight': 'balanced', 'classifier__criterion': 'entropy', 'classifier__max_depth': 10, 'classifier__min_samples_split': 10}
+2025-04-23 17:37:50,881 - train_model - INFO -   Best CV roc_auc: 0.8076
+2025-04-23 17:37:50,882 - train_model - INFO -   Test accuracy: 0.7643
+2025-04-23 17:37:50,882 - train_model - INFO -   Test precision: 0.7222
+2025-04-23 17:37:50,882 - train_model - INFO -   Test recall: 0.6393
+2025-04-23 17:37:50,882 - train_model - INFO -   Test F1: 0.6783
+2025-04-23 17:37:50,882 - train_model - INFO -   Test ROC AUC: 0.7683
+2025-04-23 17:37:50,968 - train_model - INFO - Best model: xgboost with ROC AUC = 0.8883
+2025-04-23 17:37:50,969 - train_model - INFO - Creating model comparison plots
+2025-04-23 17:37:51,530 - train_model - INFO - Analyzing feature importance
+2025-04-23 17:37:51,655 - train_model - INFO - Top 10 important features: ['NumWebPurchases', 'SpendingVolatility', 'TotalPurchases', 'MntWines', 'TotalAcceptedCampaigns', 'Recency', 'RecencyRatio', 'Teenhome', 'CampaignAcceptanceRate', 'TotalSpent']
+2025-04-23 17:37:51,655 - train_model - INFO - Training pipeline completed successfully
+2025-04-23 17:37:51,655 - main - INFO - Best model: xgboost
+2025-04-23 17:37:51,655 - main - INFO - Step 4b: Training blended model (SVM + LightGBM)
+2025-04-23 17:37:51,655 - train_model - INFO - Preparing data with test_size=0.2, stratify=True
+2025-04-23 17:37:51,656 - train_model - INFO - Data split: X_train=(1253, 69), X_test=(314, 69)
+2025-04-23 17:37:51,658 - train_model - INFO - Class distribution in train: {0: np.int64(768), 1: np.int64(485)}
+2025-04-23 17:37:51,658 - train_model - INFO - Class distribution in test: {0: np.int64(192), 1: np.int64(122)}
+2025-04-23 17:37:51,658 - model_blending - INFO - Training blended model of SVM and LightGBM
+2025-04-23 17:37:51,658 - model_blending - INFO - BlendedModel initialized
+2025-04-23 17:37:51,658 - model_blending - INFO - Fitting BlendedModel
+2025-04-23 17:37:51,658 - model_blending - INFO - Generating cross-validated predictions from SVM
+2025-04-23 17:37:52,252 - model_blending - INFO - Generating cross-validated predictions from LightGBM
+2025-04-23 17:37:53,942 - model_blending - INFO - Training meta model
+2025-04-23 17:37:53,945 - model_blending - INFO - Training SVM on full data
+2025-04-23 17:37:54,103 - model_blending - INFO - Training LightGBM on full data
+2025-04-23 17:37:54,505 - model_blending - INFO - BlendedModel fitting complete
+2025-04-23 17:37:54,539 - model_blending - INFO - Blended model evaluation results:
+2025-04-23 17:37:54,539 - model_blending - INFO -   Accuracy: 0.7930
+2025-04-23 17:37:54,539 - model_blending - INFO -   Precision: 0.7615
+2025-04-23 17:37:54,539 - model_blending - INFO -   Recall: 0.6803
+2025-04-23 17:37:54,539 - model_blending - INFO -   F1 Score: 0.7186
+2025-04-23 17:37:54,539 - model_blending - INFO -   ROC AUC: 0.8705
+2025-04-23 17:37:54,543 - model_blending - INFO - Blended model saved to models/blended_model.pkl
+2025-04-23 17:37:54,543 - main - INFO - Step 5: Evaluating best model
+2025-04-23 17:37:54,543 - train_model - INFO - Preparing data with test_size=0.2, stratify=True
+2025-04-23 17:37:54,544 - train_model - INFO - Data split: X_train=(1253, 69), X_test=(314, 69)
+2025-04-23 17:37:54,544 - train_model - INFO - Class distribution in train: {0: np.int64(768), 1: np.int64(485)}
+2025-04-23 17:37:54,544 - train_model - INFO - Class distribution in test: {0: np.int64(192), 1: np.int64(122)}
+2025-04-23 17:37:54,545 - model_evaluation - INFO - ModelEvaluator initialized
+2025-04-23 17:37:54,545 - model_evaluation - INFO - Starting comprehensive evaluation for xgboost
+2025-04-23 17:37:54,545 - model_evaluation - INFO - Evaluating xgboost on test data
+2025-04-23 17:37:54,565 - model_evaluation - INFO - Test accuracy: 0.7803
+2025-04-23 17:37:54,565 - model_evaluation - INFO - Test balanced accuracy: 0.7561
+2025-04-23 17:37:54,565 - model_evaluation - INFO - Test precision: 0.7524
+2025-04-23 17:37:54,565 - model_evaluation - INFO - Test recall: 0.6475
+2025-04-23 17:37:54,565 - model_evaluation - INFO - Test F1 score: 0.6960
+2025-04-23 17:37:54,565 - model_evaluation - INFO - Test ROC AUC: 0.8883
+2025-04-23 17:37:54,566 - model_evaluation - INFO - Test average precision: 0.8429
+2025-04-23 17:37:54,771 - model_evaluation - INFO - Performing 5-fold cross-validation for xgboost
+2025-04-23 17:37:55,717 - model_evaluation - INFO - CV accuracy: 0.8372
+2025-04-23 17:37:55,718 - model_evaluation - INFO - CV balanced accuracy: 0.8246
+2025-04-23 17:37:55,718 - model_evaluation - INFO - CV precision: 0.8022
+2025-04-23 17:37:55,718 - model_evaluation - INFO - CV recall: 0.7691
+2025-04-23 17:37:55,718 - model_evaluation - INFO - CV F1 score: 0.7853
+2025-04-23 17:37:55,718 - model_evaluation - INFO - CV ROC AUC: 0.9233
+2025-04-23 17:37:55,718 - model_evaluation - INFO - CV average precision: 0.8894
+2025-04-23 17:37:55,805 - model_evaluation - INFO - Analyzing classification thresholds for xgboost
+2025-04-23 17:37:55,907 - model_evaluation - INFO - Optimal thresholds for xgboost:
+2025-04-23 17:37:55,907 - model_evaluation - INFO -   Accuracy: 0.40
+2025-04-23 17:37:55,907 - model_evaluation - INFO -   Balanced Accuracy: 0.25
+2025-04-23 17:37:55,907 - model_evaluation - INFO -   F1: 0.20
+2025-04-23 17:37:55,908 - model_evaluation - INFO - Evaluation complete for xgboost
+2025-04-23 17:37:55,908 - model_evaluation - INFO - Summary saved to results/xgboost_evaluation_summary.csv
+2025-04-23 17:37:55,908 - main - INFO - Step 6: Making predictions on test data
+2025-04-23 17:37:55,917 - main - INFO - Submission saved to submissions/submission.csv
+2025-04-23 17:37:55,917 - main - INFO - Pipeline completed successfully
