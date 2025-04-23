@@ -1,0 +1,79 @@
+Dataset Shape: (1567, 29)
+
+Data Types:
+ID                            int32
+Year_Birth                    int32
+Education                  category
+Marital_Status             category
+Income                      float64
+Kidhome                        int8
+Teenhome                       int8
+Recency                       int16
+MntWines                    float32
+MntFruits                   float32
+MntMeatProducts             float32
+MntFishProducts             float32
+MntSweetProducts            float32
+MntGoldProds                float32
+NumDealsPurchases              int8
+NumWebPurchases                int8
+NumCatalogPurchases            int8
+NumStorePurchases              int8
+NumWebVisitsMonth              int8
+AcceptedCmp3                   int8
+AcceptedCmp4                   int8
+AcceptedCmp5                   int8
+AcceptedCmp1                   int8
+AcceptedCmp2                   int8
+Complain                       int8
+Z_CostContact                 int64
+Z_Revenue                     int64
+Target                         int8
+Days_Since_Registration       int64
+dtype: object
+
+Summary Statistics:
+                 ID   Year_Birth         Income      Kidhome     Teenhome  ...     Complain  Z_CostContact  Z_Revenue       Target  Days_Since_Registration
+count   1567.000000  1567.000000    1567.000000  1567.000000  1567.000000  ...  1567.000000         1567.0     1567.0  1567.000000              1567.000000
+mean    5566.847479  1968.891512   51833.584174     0.449904     0.499681  ...     0.010211            3.0       11.0     0.387364              4328.511168
+std     3255.424029    11.721425   20689.088477     0.546566     0.548858  ...     0.100562            0.0        0.0     0.487304               173.960352
+min        0.000000  1925.000000    1730.000000     0.000000     0.000000  ...     0.000000            3.0       11.0     0.000000              3792.000000
+25%     2820.500000  1960.000000   35777.500000     0.000000     0.000000  ...     0.000000            3.0       11.0     0.000000              4335.000000
+50%     5462.000000  1970.000000   51277.000000     0.000000     0.000000  ...     0.000000            3.0       11.0     0.000000              4335.000000
+75%     8423.500000  1977.000000   67902.000000     1.000000     1.000000  ...     0.000000            3.0       11.0     1.000000              4335.000000
+max    11191.000000  1996.000000  102002.300000     2.000000     2.000000  ...     1.000000            3.0       11.0     1.000000              4854.000000
+
+[8 rows x 27 columns]
+
+Missing Values:
+ID                         0
+Year_Birth                 0
+Education                  0
+Marital_Status             0
+Income                     0
+Kidhome                    0
+Teenhome                   0
+Recency                    0
+MntWines                   0
+MntFruits                  0
+MntMeatProducts            0
+MntFishProducts            0
+MntSweetProducts           0
+MntGoldProds               0
+NumDealsPurchases          0
+NumWebPurchases            0
+NumCatalogPurchases        0
+NumStorePurchases          0
+NumWebVisitsMonth          0
+AcceptedCmp3               0
+AcceptedCmp4               0
+AcceptedCmp5               0
+AcceptedCmp1               0
+AcceptedCmp2               0
+Complain                   0
+Z_CostContact              0
+Z_Revenue                  0
+Target                     0
+Days_Since_Registration    0
+dtype: int64
+
